@@ -37,9 +37,17 @@ python mainGame.py --playmode Hand --anchorpoint 15 --threshold 150
 - Move your partition of body into identified area to moving character in the game.
 
 
-## Architecture Designed
+## Architecture Designs and Methodology
+
+This is my pipeline process for the operation:
 
 ![Web capture_18-3-2023_165718_app diagrams net](https://user-images.githubusercontent.com/81562297/226098767-6cb7eff3-5dfc-472d-b1a3-8854f557f243.jpeg)
+
+- First of all, I went for repairing data for the training set by generating manually, which means the two types of actions would be made as samples.
+- After having labeled data, I would start to push it to modelimg process, in which I was applying LSTM architecture for training method and then extracting the model for prediction step. (In case of you do not have enough chance for conducting the training process, I already did it for you with the set of pretrained data, including 'SWING BODY' and 'SWING HAND', in which result of weight be stored in 'model.h5').
+- With trained model, I start to apply it into OpenCV for predicting human's current activity, compouding with Mediapipe for detecting human's lamdmark points in order to figure out the curren short action of human and make a control on game's character after CLAPPING (action to start the game) by several methods below:
+	- For BODY playmode, I would detect a constant line of y axis depending on human's shoulders after you performing a CLAP. Every actions which makes your shoulders point higher or lower than that line (+/- threshold) would result into a correlated action (JUMP and SCROLL) for character. The same algorithm is applied for x axis related action (LEFT and RIGHT) of user as well as character.
+	- For HAND playmode, it is possible for player select their own landmark point on their hand for an anchor point, whenever you move that anchor point out of the middle x line and y line (+/- threshold), character would perform an action associated with the axis of that point (JUMP SCROLL LEFT RIGHT).
 
 ## My Insufficience
 his endeavor was developed just for personal purpose, which caused it unable to totally complete the code's logic and several mistakes. Once you have any interest in this project, let's work together to make it better. I'd always happy to share with you further project-related ideas.
