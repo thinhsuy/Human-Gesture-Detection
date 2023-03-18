@@ -27,10 +27,9 @@ python mainGame.py --playmode Hand --anchorpoint 15 --threshold 150
 ```
 - `playmode`: the partition of yours for this detection of the game (including Body and Hand), change it if you want to play chosen mode.
 - `anchorpoint`: the particular point of landmarks on your body for detection, incase you are playing Body Mode, this point would be default and constant at 11 and 12 (left and right shoulder). But if you are playing in mode of Hand, you could flexibily choose your anchor for moving character (the specific point of your body could learned from this image)
+- `threshold`: the limitation of range that you move your hand as well as body, the bigger threshold the more range of your action must be occured
 
 ![33-Landmarks-detected-on-the-human-body-using-MediaPipe](https://user-images.githubusercontent.com/81562297/226096970-d9c774f7-151b-48e6-9bbb-68bced138a94.png)
-
-- `threshold`: the limitation of range that you move your hand as well as body, the bigger threshold the more range of your action must be occured
 
 ### 2. After running this, let's open any website of game that containing `SubwaySuffer` game (or you could use [this weblink of SubwaySuffer](https://www.trochoi.net/tr%C3%B2+ch%C6%A1i/subway-surfers.html))
 - When the code is running and webcame is auto appearing, let's SWING hand if you playing hand mode or body if you're playing body mode for first detection.
@@ -42,3 +41,5 @@ python mainGame.py --playmode Hand --anchorpoint 15 --threshold 150
 
 ![Web capture_18-3-2023_165718_app diagrams net](https://user-images.githubusercontent.com/81562297/226098767-6cb7eff3-5dfc-472d-b1a3-8854f557f243.jpeg)
 
+## My Insufficience
+his endeavor was developed just for personal purpose, which caused it unable to totally complete the code's logic and several mistakes. Once you have any interest in this project, let's work together to make it better. I'd always happy to share with you further project-related ideas.
