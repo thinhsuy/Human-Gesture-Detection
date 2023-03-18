@@ -21,7 +21,7 @@ pip install -r setup.txt
 And then all the requirements for this program are already installed and now you are able to run it.
 
 ## How to run?
-1. To run the program, please insert below line into current Terminal in case you take too much attention on its parameters
+### 1. To run the program, please insert below line into current Terminal in case you take too much attention on its parameters
 ```
 python mainGame.py --playmode Hand --anchorpoint 15 --threshold 150
 ```
@@ -32,7 +32,13 @@ python mainGame.py --playmode Hand --anchorpoint 15 --threshold 150
 
 - `threshold`: the limitation of range that you move your hand as well as body, the bigger threshold the more range of your action must be occured
 
-2. After running this, let's open any website of game that containing `SubwaySuffer` game (or you could use [this weblink of SubwaySuffer](https://www.trochoi.net/tr%C3%B2+ch%C6%A1i/subway-surfers.html))
+### 2. After running this, let's open any website of game that containing `SubwaySuffer` game (or you could use [this weblink of SubwaySuffer](https://www.trochoi.net/tr%C3%B2+ch%C6%A1i/subway-surfers.html))
+- When the code is running and webcame is auto appearing, let's SWING hand if you playing hand mode or body if you're playing body mode for first detection.
+- After that change your window into the game, and CLAP your hand (keep for 1-2 seconds) for starting the game.
+- Move your partition of body into identified area to moving character in the game.
 
 
 ## Architecture Designed
+
+![Web capture_18-3-2023_165718_app diagrams net](https://user-images.githubusercontent.com/81562297/226098767-6cb7eff3-5dfc-472d-b1a3-8854f557f243.jpeg)
+
