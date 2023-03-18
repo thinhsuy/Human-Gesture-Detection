@@ -1,0 +1,9 @@
+mediapipe
+opencv-python
+pyautogui
+argparse
+numpy
+pandas
+tensorflow
+keras
+sklearn
