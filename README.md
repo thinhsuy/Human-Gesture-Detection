@@ -54,11 +54,11 @@ This is my pipeline process for the operation:
 
 - For **BODY playmode**, I would detect a constant line of y axis depending on human's shoulders after you performing a CLAP. Every actions which makes your shoulders point higher or lower than that line (+/- threshold) would result into a correlated action (JUMP and SCROLL) for character. The same algorithm is applied for x axis related action (LEFT and RIGHT) of user as well as character.
 	
-![Untitled](https://user-images.githubusercontent.com/81562297/226161827-86c0ed66-5dcf-4d5c-a425-9ab9c16a5f55.png)
+![aczxcz](https://user-images.githubusercontent.com/81562297/226161823-1b9d260f-e4c3-4155-8a01-363be6e6f926.png)
 	
 - For **HAND playmode**, it is possible for player select their own landmark point on their hand for an anchor point, whenever you move that anchor point out of the middle x line and y line (+/- threshold), character would perform an action associated with the axis of that point (JUMP SCROLL LEFT RIGHT).
 	
-![aczxcz](https://user-images.githubusercontent.com/81562297/226161823-1b9d260f-e4c3-4155-8a01-363be6e6f926.png)
+![Untitled](https://user-images.githubusercontent.com/81562297/226161827-86c0ed66-5dcf-4d5c-a425-9ab9c16a5f55.png)
 
 - Perhaps more than with its former location, the character would be able to do any action related to the current position of the point (shoulder or hand) using the anchor point's axis.
 
