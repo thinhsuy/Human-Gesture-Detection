@@ -1,13 +1,27 @@
 from header import *
 
 class Pose_detection():
-    def __init__(self):
+    def __init__(self, detect_class, threshold):
         self.mp_pose = mp.solutions.pose
         self.pose = self.mp_pose.Pose()
         self.mp_drawing = mp.solutions.drawing_utils
         # Assign user's shoulder as limit of line that detect for jump and down
         self.shoudler_line_y = 0 
-        self.threshold = 150
+        self.threshold = int(threshold)
+        self.detect_point = detect_class
+
+    def getLM_by_point(self, results, point):
+        lmPoints = {
+            '15': self.mp_pose.PoseLandmark.LEFT_WRIST,
+            '16': self.mp_pose.PoseLandmark.RIGHT_WRIST,
+            '17': self.mp_pose.PoseLandmark.LEFT_PINKY,
+            '18': self.mp_pose.PoseLandmark.RIGHT_PINKY,
+            '19': self.mp_pose.PoseLandmark.LEFT_INDEX,
+            '20': self.mp_pose.PoseLandmark.RIGHT_INDEX,
+            '21': self.mp_pose.PoseLandmark.LEFT_THUMB,
+            '22': self.mp_pose.PoseLandmark.RIGHT_THUMB
+        } 
+        return results.pose_landmarks.landmark[lmPoints[point]] 
 
     def detectPose(self, image):
         # RGB color convert
@@ -47,17 +61,17 @@ class Pose_detection():
         image_mid_width = image_width // 2
 
         # Calculate the coordination of player shoulder, due to because the mp_pose only return % distance with middle image
-        leftHand_x = int(results.pose_landmarks.landmark[self.mp_pose.PoseLandmark.LEFT_WRIST].x * image_width)
-        rightHand_x = int(results.pose_landmarks.landmark[self.mp_pose.PoseLandmark.RIGHT_WRIST].x * image_width)
+        detected_partition = self.getLM_by_point(results, self.detect_point)
+        Hand_x = int(detected_partition.x * image_width)
 
         threshold = self.threshold+50
 
         # Assign the result
-        if (leftHand_x < image_mid_width-threshold): LRC = "L"
-        elif (leftHand_x > image_mid_width+threshold): LRC = "R"
+        if (Hand_x < image_mid_width-threshold): LRC = "L"
+        elif (Hand_x > image_mid_width+threshold): LRC = "R"
         else: LRC = "C"
 
-        cv2.putText(image, f"{LRC} with {leftHand_x}", (5, image_height - 10), cv2.FONT_HERSHEY_PLAIN, 2, (255, 255, 255), 3)
+        cv2.putText(image, f"{LRC} with {Hand_x}", (5, image_height - 10), cv2.FONT_HERSHEY_PLAIN, 2, (255, 255, 255), 3)
         cv2.line(image, (image_mid_width, 0), (image_mid_width, image_height), (255, 255, 255), 2)
         cv2.line(image, (image_mid_width+threshold, 0), (image_mid_width+threshold, image_height), (255, 255, 255), 2)
         cv2.line(image, (image_mid_width-threshold, 0), (image_mid_width-threshold, image_height), (255, 255, 255), 2)
@@ -68,10 +82,8 @@ class Pose_detection():
         image_height, image_width, _ = image.shape
         image_mid_height = (image_height // 2) + 100
 
-        leftHand_y = int(results.pose_landmarks.landmark[self.mp_pose.PoseLandmark.LEFT_WRIST].y * image_height)
-        rightHand_x = int(results.pose_landmarks.landmark[self.mp_pose.PoseLandmark.RIGHT_WRIST].y * image_height)
-
-        # centerShoulder_y = abs(leftShoulder_y + rightShoulder_y) // 2
+        detected_partition = self.getLM_by_point(results, self.detect_point)
+        leftHand_y = int(detected_partition.y * image_height)
 
         # Assign threshold for limitation of jump and down detection
         threshold = self.threshold
@@ -97,8 +109,8 @@ class Pose_detection():
         centerShoulder_y = abs(leftShoulder_y + rightShoulder_y) // 2
 
         # Assign threshold for limitation of jump and down detection
-        jump_threshold = 50
-        down_threshold = 50
+        jump_threshold = self.threshold//3
+        down_threshold = self.threshold//3
 
         # Assign the result
         if (centerShoulder_y < self.shoudler_line_y - jump_threshold): JSD = "J"

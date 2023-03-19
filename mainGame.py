@@ -3,11 +3,13 @@ from detectPose import Pose_detection
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--playmode', default='Hand', help='Method of recognition for the game, including Body or Hand')
+parser.add_argument('--anchorpoint', default='15', help='The point of user body that represent for landmark detection')
+parser.add_argument('--threshold', default='150', help='The limitation of threshold for action an activity')
 opt = parser.parse_args()
 
 class SubwaySuffers():
     def __init__(self):
-        self.pose = Pose_detection()
+        self.pose = Pose_detection(opt.anchorpoint, opt.threshold)
         self.game_started = False
         self.x_position = 1 # position of player in game, 0 means left way, 1 center and 2 means right ways
         self.y_position = 1 # ction of player in game, 0 means down, 1 stay and 2 means jump
