@@ -60,5 +60,5 @@ This is my pipeline process for the operation:
 	
 ![aczxcz](https://user-images.githubusercontent.com/81562297/226161823-1b9d260f-e4c3-4155-8a01-363be6e6f926.png)
 	
-## My Insufficience
-his endeavor was developed just for personal purpose, which caused it unable to totally complete the code's logic and several mistakes. Once you have any interest in this project, let's work together to make it better. I'd always happy to share with you further project-related ideas.
+## Maintenance
+This endeavor was developed just for personal purpose, which caused it unable to totally complete the code's logic and several mistakes. Once you have any interest in this project, let's work together to make it better. I'd always happy to share with you further project-related ideas.
