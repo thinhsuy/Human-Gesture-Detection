@@ -59,6 +59,16 @@ This is my pipeline process for the operation:
 - For **HAND playmode**, it is possible for player select their own landmark point on their hand for an anchor point, whenever you move that anchor point out of the middle x line and y line (+/- threshold), character would perform an action associated with the axis of that point (JUMP SCROLL LEFT RIGHT).
 	
 ![aczxcz](https://user-images.githubusercontent.com/81562297/226161823-1b9d260f-e4c3-4155-8a01-363be6e6f926.png)
-	
+
+- Perhaps more than with its former location, the character would be able to do any action related to the current position of the point (shoulder or hand) using the anchor point's axis.
+
+![caa](https://user-images.githubusercontent.com/81562297/226162690-af4c3cff-ad15-4ef4-9ecc-577bc23b9891.png)
+
 ## Maintenance
 This endeavor was developed just for personal purpose, which caused it unable to totally complete the code's logic and several mistakes. Once you have any interest in this project, let's work together to make it better. I'd always happy to share with you further project-related ideas.
+
+## References
+- [Developing a Long Short-Term Memory (LSTM) based model for predicting water table depth in agricultural areas](https://www.sciencedirect.com/science/article/abs/pii/S0022169418303184)
+- [Recognition-based gesture spotting in video games](https://www.sciencedirect.com/science/article/abs/pii/S0167865504001576)
+- [MiAI_Human_Activity_Recognition](https://github.com/thangnch/MiAI_Human_Activity_Recognition)
+- [MiAI_Game_Control_by_Pose](https://github.com/thangnch/MiAI_Game_Control_by_Pose)
