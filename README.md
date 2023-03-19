@@ -45,6 +45,9 @@ This is my pipeline process for the operation:
 
 - First of all, I selected to manually generate the data repairs for the training set, which meant the different kinds of actions would be made as samples.
 - Once the data had been tagged, I would begin to push it through the modeling process, using the [LSTM](https://en.wikipedia.org/wiki/Long_short-term_memory) architecture as my training approach before extracting the model for the prediction stage. (In the event that you lack the time to carry out the training procedure, I have already done it for you with the set of pretrained data, which includes `SWING BODY` and `SWING HAND` with the weight result being stored in `model.h5`).
+
+![Web capture_19-3-2023_143318_app diagrams net](https://user-images.githubusercontent.com/81562297/226160675-b3625ab4-814a-4bb7-9c4e-6a35d85dc6d4.jpeg)
+
 - With the trained model, I continue using [OpenCV](https://docs.opencv.org/4.x/d1/dfb/intro.html) to predict human interaction while combining with [Mediapipe](https://google.github.io/mediapipe/) to identify human landmarks in to figure out the current short motion of the human and control the game character after CLAPPING (action to start the game) by several of the techniques below:
 	- For **BODY playmode**, I would detect a constant line of y axis depending on human's shoulders after you performing a CLAP. Every actions which makes your shoulders point higher or lower than that line (+/- threshold) would result into a correlated action (JUMP and SCROLL) for character. The same algorithm is applied for x axis related action (LEFT and RIGHT) of user as well as character.
 	- For **HAND playmode**, it is possible for player select their own landmark point on their hand for an anchor point, whenever you move that anchor point out of the middle x line and y line (+/- threshold), character would perform an action associated with the axis of that point (JUMP SCROLL LEFT RIGHT).
