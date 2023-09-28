@@ -1,4 +1,4 @@
-# Human Gesture Detection Game
+# Human Gesture Detection - Object Detection
 ## Introduction
 Instead of using the mouse or keyboard buttons to control the games, vision-based interfaces for video games use gestures, to give the user a more natural interface, these interfaces must accommodate inadvertent movements and ongoing gestures.
 
